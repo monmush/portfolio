@@ -1,18 +1,13 @@
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
-import { Highlight } from "@/components/Highlight";
-import { Paragraph } from "@/components/Paragraph";
-import { Products } from "@/components/Products";
 import { Metadata } from "next";
-import Image from "next/image";
 
-import { motion } from "framer-motion";
 import About from "@/components/About";
 
 export const metadata: Metadata = {
-  title: "About | John Doe",
+  title: "About | Minh Pham",
   description:
-    "John Doe is a developer, writer and speaker. He is a digital nomad and travels around the world while working remotely.",
+    "Minh Pham is a frontend engineer with 5 years of experience building SaaS solutions. He works remotely from Vietnam, delivering high-quality web applications.",
 };
 
 export default function AboutPage() {

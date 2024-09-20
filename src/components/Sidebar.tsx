@@ -1,17 +1,17 @@
 "use client";
 import { navlinks } from "@/constants/navlinks";
+import { socials } from "@/constants/socials";
+import { isMobile } from "@/lib/utils";
 import { Navlink } from "@/types/navlink";
+import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { Heading } from "./Heading";
-import { socials } from "@/constants/socials";
 import { Badge } from "./Badge";
-import { AnimatePresence, motion } from "framer-motion";
-import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
-import { isMobile } from "@/lib/utils";
+import { Heading } from "./Heading";
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(isMobile() ? false : true);
@@ -113,8 +113,8 @@ const SidebarHeader = () => {
         className="object-cover object-top rounded-full flex-shrink-0"
       />
       <div className="flex text-sm flex-col">
-        <p className="font-bold text-primary">John Doe</p>
-        <p className="font-light text-secondary">Developer</p>
+        <p className="font-bold text-primary">Minh Pham</p>
+        <p className="font-light text-secondary">Front End Engineer</p>
       </div>
     </div>
   );
