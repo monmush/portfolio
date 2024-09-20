@@ -27,7 +27,7 @@ export default function About() {
           width={600}
           height={400}
           alt="about"
-          className="rounded-md object-covershadow-xl aspect-[6/4] w-4/5 block m-auto my-8 h-auto"
+          className="rounded-md object-covershadow-xl aspect-[6/4] w-2/3 block m-auto my-8 h-auto"
         />
 
         <Paragraph className=" mt-4">
@@ -65,7 +65,7 @@ export default function About() {
           width={400}
           height={600}
           alt="about"
-          className="rounded-md object-covershadow-xl block w-4/5 aspect-[4/3] m-auto my-8 h-auto"
+          className="rounded-md object-covershadow-xl block w-2/3 aspect-[4/3] m-auto my-8 h-auto"
         />
 
         <Paragraph className=" mt-4">
@@ -76,20 +76,33 @@ export default function About() {
             className="text-blue-500"
           >
             Inspectorio
-          </a>
-          , a US-based SaaS company specializing in an AI-powered supply chain
-          management platform. Working at Inspectorio allowed me to collaborate
-          with colleagues from North America, Europe, and Southeast Asia. We
-          served top-tier Fortune 500 companies such as Target and Tesco,
-          providing innovative solutions for supply chain management.
+          </a>{" "}
+          - a US-based SaaS company specializing in an AI-powered supply chain
+          management platform. Working alongside colleagues from North America,
+          Europe, and Southeast Asia, we provided innovative solutions for top
+          Fortune 500 companies like Target and Tesco.
         </Paragraph>
+
         <Paragraph className=" mt-4">
-          🌟 Now, in August 2024, after five years of continuous work, I am
-          taking a temporary break to reflect on my career. I plan to spend this
-          valuable time exploring Vietnam, revisiting some hobbies, and learning
-          new skills as an engineer. I will return soon, bringing renewed energy
-          to my work and continuing to build excellent products that benefit
-          individuals and businesses.
+          ❤️ That same year, I got married and moved back to Hanoi after three
+          years in Ho Chi Minh City.
+        </Paragraph>
+
+        <Image
+          src="/images/414650695_6778192372277989_444947061929942712_n.jpg"
+          width={600}
+          height={900}
+          alt="about"
+          className="rounded-md object-covershadow-xl block w-2/3 m-auto my-8 h-auto"
+        />
+
+        <Paragraph className=" mt-4">
+          🌟 Now, in August 2024, after five years of continous work, I&apos;m
+          taking a temporary break to reflect on my career. During this time, I
+          plan to explore Vietnam, reconnect with hobbies, and develop new
+          engineering skills. I’ll be back soon, with fresh energy, ready to
+          create impactful products that benefit both individuals and
+          businesses.
         </Paragraph>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 my-10">

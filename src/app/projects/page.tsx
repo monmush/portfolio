@@ -1,6 +1,5 @@
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
-import { Products } from "@/components/Products";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,7 +17,7 @@ export default function Projects() {
         What I&apos;ve been working on
       </Heading>
 
-      <Products />
+      {/* <Products /> */}
     </Container>
   );
 }

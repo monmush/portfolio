@@ -1,53 +1,25 @@
-import Image from "next/image";
-import React from "react";
 import { Heading } from "./Heading";
-import { twMerge } from "tailwind-merge";
 
 export const TechStack = () => {
-  const stack = [
-    {
-      title: "Next.js",
-      src: "/images/logos/next.png",
+  const techStacks = {
+    Languages: [
+      "JavaScript (Expert)",
+      "TypeScript (Expert)",
+      "HTML (Expert)",
+      "CSS (Expert)",
+    ],
+    "Rendering Frameworks": ["React (Expert)", "Next.js (Expert)", "Gatsby"],
+    "CSS Frameworks": [
+      "Ant Design (Expert)",
+      "Tailwind CSS (Expert)",
+      "Styled Components",
+      "Shadcn",
+      "NextUI",
+      "SASS",
+    ],
+    "Data Fetching": ["GraphQL", "TanStack Query", "Apollo Client", "Prisma"],
+  };
 
-      className: "h-10 w-14",
-    },
-    {
-      title: "AWS",
-      src: "/images/logos/aws.webp",
-
-      className: "h-10 w-10",
-    },
-    {
-      title: "Figma",
-      src: "/images/logos/figma.png",
-
-      className: "h-10 w-8",
-    },
-    {
-      title: "Framer Motion",
-      src: "/images/logos/framer.webp",
-
-      className: "h-10 w-10",
-    },
-    {
-      title: "Node",
-      src: "/images/logos/node.png",
-
-      className: "h-10 w-12",
-    },
-    {
-      title: "Tailwind",
-      src: "/images/logos/tailwind.png",
-
-      className: "h-10 w-24",
-    },
-    {
-      title: "Vercel",
-      src: "/images/logos/vercel.png",
-
-      className: "h-10 w-24",
-    },
-  ];
   return (
     <div>
       <Heading
@@ -56,16 +28,21 @@ export const TechStack = () => {
       >
         Tech Stack
       </Heading>
-      <div className="flex flex-wrap">
-        {stack.map((item) => (
-          <Image
-            src={item.src}
-            key={item.src}
-            width={`200`}
-            height={`200`}
-            alt={item.title}
-            className={twMerge("object-contain mr-4 mb-4", item.className)}
-          />
+      <div className="grid grid-cols-2 text-normal">
+        {Object.entries(techStacks).map(([category, items]) => (
+          <div key={category} className="w-full mb-4">
+            <Heading
+              as="h3"
+              className="font-semibold text-sm md:text-base lg:text-base"
+            >
+              {category}
+            </Heading>
+            <ul className="text-secondary pl-1">
+              {items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         ))}
       </div>
     </div>
