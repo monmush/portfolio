@@ -1,7 +1,6 @@
 import { Blogs } from "@/components/Blogs";
 import { Container } from "@/components/Container";
 import { Heading } from "@/components/Heading";
-import { Highlight } from "@/components/Highlight";
 import { Paragraph } from "@/components/Paragraph";
 import { Metadata } from "next";
 import { getAllBlogs } from "../../../lib/getAllBlogs";
@@ -21,8 +20,8 @@ export default async function Blog() {
       <span className="text-4xl">📝</span>
       <Heading className="font-black pb-4">Sometimes I write</Heading>
       <Paragraph className="pb-10">
-        Ever since <Highlight> I was a kid</Highlight>, I&apos;ve been
-        fascinated by technology.
+        I write about career growth, technology, self-reflection, and the
+        journey toward personal and professional fulfillment.
       </Paragraph>
       <Blogs blogs={data} />
     </Container>
