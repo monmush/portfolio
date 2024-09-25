@@ -19,6 +19,7 @@ export async function getAllBlogs() {
 
   let blogs = await Promise.all(blogFileNames.map(importBlog));
 
+  console.log("blogs", blogs);
   return blogs.sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);

@@ -1,0 +1,108 @@
+import { BlogLayout } from "@/components/BlogLayout";
+import { CodeWindow } from "@/components/CodeWindow";
+
+export const meta = {
+  date: "2024-09-25",
+  title: "Exploring Blockchain: Building a Web3 Wallet with Enhanced Security",
+  description:
+    "Discover my journey into blockchain development, building a Web3 wallet with AES encryption and PBKDF2 for secure passcode protection on a web platform.",
+  image:
+    "https://images.unsplash.com/photo-1589935447067-5531094415d1?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop&crop=edges",
+  tags: ["Blockchain", "Web3", "Cryptography"],
+};
+
+export default (props) => <BlogLayout meta={meta} {...props} />;
+
+## Exploring Blockchain: Building a Web3 Wallet with Enhanced Security
+
+As someone eager to dive into the blockchain world, I decided to create a Web3 wallet as my first project. I wanted to build this wallet on the web platform, focusing on simplicity while ensuring security. After setting up the project, I realized that I needed a mechanism for users to quickly log into their wallet. A common approach I've seen is using a 6-digit passcode. This is straightforward, but given the sensitive nature of a crypto wallet, security becomes a top priority.
+
+### Storing the Passcode Locally
+
+Since I'm building the wallet as a web app, storing the passcode in the browser's `localStorage` is the simplest option. However, storing a plain passcode directly in `localStorage` would make it vulnerable to theft or hacking. Therefore, I need to encrypt the passcode so it's not easily accessible.
+
+### Why AES for Encryption?
+
+I decided to use **AES (Advanced Encryption Standard)** for encrypting the passcode because it allows for two-way encryption. This means I can encrypt the passcode, store it securely, and later decrypt it when the user logs in to compare it with the passcode they input.
+
+AES requires two main inputs:
+
+1. **The data to be encrypted** (in this case, the passcode).
+2. **A secret key** to ensure only authorized access can decrypt the data.
+
+However, the challenge is: where do I get the secret key from?
+
+### Deriving a Strong Secret Key
+
+Simply using a random word as the secret key isn’t secure enough. It could make the encryption easily reversible by attackers. I needed something that was not only unreadable to humans but also had built-in randomness to protect against precomputed attacks, like rainbow tables.
+
+This is where **PBKDF2** (Password-Based Key Derivation Function 2) comes into play.
+
+### What PBKDF2 Brings to the Table
+
+PBKDF2 is a cryptographic function that uses a password (in this case, the passcode) and a **salt** (random data) to generate a strong, secure key. This derived key can then be used as the AES secret key. By hashing the passcode with the salt multiple times (through iterations), PBKDF2 ensures that the key is resistant to brute-force and rainbow table attacks.
+
+Importantly, PBKDF2 is a one-way function, meaning that once the passcode is hashed, it cannot be reversed. However, if you use the same salt and password with the same number of iterations, PBKDF2 will consistently produce the same output, making it useful for encryption key generation.
+
+### Combine it all together
+
+Here is what the code looks like when we combine everything together:
+
+```tsx
+import { AES, enc, lib, PBKDF2 } from "crypto-js";
+
+const KEY_SIZE = 256 / 32;
+const ITERATIONS = 1000;
+const SALT_LENGTH = 16;
+
+export function generateSalt(): string {
+  return lib.WordArray.random(SALT_LENGTH).toString();
+}
+
+// Strengthening passcode security:
+// Directly using the passcode as the AES encryption key is weak and easily reversible.
+// The deriveKey function uses PBKDF2 with a salt to create a stronger, more secure key,
+// making decryption much harder for attackers.
+export function deriveKey(passcode: string, salt: string): string {
+  return PBKDF2(passcode, salt, {
+    keySize: KEY_SIZE,
+    iterations: ITERATIONS,
+  }).toString();
+}
+
+export function encrypt(passcode: string): string {
+  const salt = generateSalt();
+  const key = deriveKey(passcode, salt);
+  const encrypted = AES.encrypt(passcode, key).toString();
+  return JSON.stringify({ salt, encrypted });
+}
+
+export function decrypt(encryptedData: string, passcode: string): string {
+  const { salt, encrypted } = JSON.parse(encryptedData);
+  const key = deriveKey(passcode, salt);
+  const decrypted = AES.decrypt(encrypted, key);
+  return decrypted.toString(enc.Utf8);
+}
+```
+
+### Summarizing Cryptographic Algorithms
+
+Here’s a quick summary of the cryptographic algorithms I’ve been working with:
+
+#### **Advanced Encryption Standard (AES)**
+
+- **AES.encrypt** is used to convert plaintext (e.g., the passcode) into ciphertext (unreadable data) using a secret key.
+- AES requires two inputs:
+  1.  The data to encrypt (e.g., passcode).
+  2.  A secret key to secure the data.
+- **AES with IV**: AES typically uses an **Initialization Vector (IV)** to add randomness, ensuring that even if the same plaintext and key are used, the ciphertext will be different each time. This randomness enhances security by preventing pattern analysis.
+
+#### **PBKDF2 (Password-Based Key Derivation Function 2)**
+
+- **PBKDF2** is a one-way hashing function used to derive a strong key from a passcode.
+- It uses a **salt** to add randomness, and multiple iterations to slow down brute-force attacks.
+- If the same salt, password, and iteration count are provided, PBKDF2 will always produce the same key, which can then be used for encryption.
+
+### Conclusion
+
+By combining **PBKDF2** to derive a secure key with **AES** for encryption, I’m confident that the passcode for my Web3 wallet is well-protected. This approach ensures that even if someone gains access to the encrypted passcode in `localStorage`, they won’t be able to easily decrypt it without the correct key. This has been a valuable learning experience, and I’m excited to continue exploring the world of blockchain and crypto security.

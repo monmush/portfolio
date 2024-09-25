@@ -24,12 +24,12 @@ export default function Home() {
         Explore my portfolio to see the projects I&apos;ve worked on and
         discover how my expertise can contribute to your next big idea!
       </Paragraph>
-      <Heading
+      {/* <Heading
         as="h2"
         className="font-black text-lg md:text-lg lg:text-lg mt-20 mb-4"
       >
         What I&apos;ve been working on
-      </Heading>
+      </Heading> */}
       {/* <Products /> */}
       <TechStack />
     </Container>
