@@ -9,18 +9,13 @@ export const meta = {
   image:
     "https://images.unsplash.com/photo-1551410224-699683e15636?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop&crop=edges",
   tags: ["Self understanding", "Personality test"],
-  imgCredit: (
-    <>
-      Photo by{" "}
-      <a href="https://unsplash.com/@picoftasty?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
-        Mae Mu
-      </a>{" "}
-      on{" "}
-      <a href="https://unsplash.com/photos/sliced-orange-fruit-in-bowl-9z-veIxii6k?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
-        Unsplash
-      </a>
-    </>
-  ),
+  imgCredit: {
+    photographer: "Mae Mu",
+    photographerUrl:
+      "https://unsplash.com/@picoftasty?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash",
+    sourceUrl:
+      "https://unsplash.com/photos/sliced-orange-fruit-in-bowl-9z-veIxii6k?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash",
+  },
 };
 
 export default (props) => <BlogLayout meta={meta} {...props} />;

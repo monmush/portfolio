@@ -60,9 +60,26 @@ export function BlogLayout({
               className={`object-cover object-center w-full max-h-96`}
             />
           </div>
-          <caption className="text-zinc-400 mt-1 text-left text-sm">
-            {meta.imgCredit}
-          </caption>
+          {meta.imgCredit && (
+            <caption className="text-zinc-400 mt-1 text-left text-sm">
+              Photo by{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={meta.imgCredit.photographerUrl}
+              >
+                {meta.imgCredit.photographer}
+              </a>{" "}
+              on{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={meta.imgCredit.sourceUrl}
+              >
+                Unsplash
+              </a>
+            </caption>
+          )}
         </header>
         <Prose className="mt-8">{children}</Prose>
       </article>

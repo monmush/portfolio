@@ -8,19 +8,16 @@ export const meta = {
     "Discover my journey into blockchain development, building a Web3 wallet with AES encryption and PBKDF2 for secure passcode protection on a web platform.",
   image:
     "https://images.unsplash.com/photo-1589935447067-5531094415d1?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop&crop=edges",
-  imgCredit: (
-    <>
-      Photo by{" "}
-      <a href="https://unsplash.com/@jaqbovsky?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
-        Michał Jakubowski
-      </a>{" "}
-      on{" "}
-      <a href="https://unsplash.com/photos/white-and-black-camera-on-tripod-oQD9uq4Rd4I?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
-        Unsplash
-      </a>
-    </>
-  ),
-  tags: ["Blockchain", "Web3", "Cryptography"],
+  imgCredit: {
+    photographer: " Michał Jakubowski",
+    photographerUrl:
+      "https://unsplash.com/@jaqbovsky?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash",
+    sourceUrl:
+      "https://unsplash.com/photos/white-and-black-camera-on-tripod-oQD9uq4Rd4I?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash",
+
+},
+
+tags: ["Blockchain", "Web3", "Cryptography"],
 };
 
 export default (props) => <BlogLayout meta={meta} {...props} />;

@@ -1,11 +1,11 @@
 "use client";
 import { Blog } from "@/types/blog";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import React, { useState } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import { Heading } from "./Heading";
 import { Paragraph } from "./Paragraph";
-import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 
 export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
   const [hovered, setHovered] = useState<string | null>(null);
@@ -55,15 +55,16 @@ export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
               )}
             </AnimatePresence>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative z-20">
-              <Image
-                src={blog.image}
-                alt="thumbnail"
-                height="200"
-                width="200"
-                objectFit="cover"
-                className="rounded-md object-cover h-40 w-60"
-              />
-              <div className="flex flex-col col-span-3">
+              <div className="md:col-span-1 w-full">
+                <Image
+                  src={blog.image}
+                  alt="thumbnail"
+                  height="200"
+                  width="200"
+                  className="rounded-md object-cover w-full h-52 md:w-60 md:h-40"
+                />
+              </div>
+              <div className="flex flex-col md:col-span-3">
                 <Heading className="text-lg md:text-lg lg:text-lg">
                   {blog.title}
                 </Heading>
