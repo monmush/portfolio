@@ -28,18 +28,23 @@ export const TechStack = () => {
       >
         Tech Stack
       </Heading>
-      <div className="grid grid-cols-2 text-normal">
+      <div className="grid grid-cols-2 gap-3 md:gap-5 text-normal">
         {Object.entries(techStacks).map(([category, items]) => (
           <div key={category} className="w-full mb-4">
             <Heading
               as="h3"
-              className="font-semibold text-sm md:text-base lg:text-base"
+              className="font-semibold text-sm md:text-base mb-4 lg:text-base"
             >
               {category}
             </Heading>
-            <ul className="text-secondary pl-1">
+            <ul className="text-secondary grid gap-2 pl-1">
               {items.map((item) => (
-                <li key={item}>{item}</li>
+                <li
+                  className="bg-gray-100 rounded-lg p-2 border border-solid border-gray-200 text-sm md:text-base lg:text-base"
+                  key={item}
+                >
+                  {item}
+                </li>
               ))}
             </ul>
           </div>
