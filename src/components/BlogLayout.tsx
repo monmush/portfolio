@@ -1,12 +1,11 @@
 "use client";
-import Head from "next/head";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { formatDate } from "../../lib/formatDate";
 import { Prose } from "@/components/Prose";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { formatDate } from "../../lib/formatDate";
 import { Container } from "./Container";
 import { Heading } from "./Heading";
-import Link from "next/link";
 import { Paragraph } from "./Paragraph";
 
 function ArrowLeftIcon(props: any) {
@@ -58,9 +57,12 @@ export function BlogLayout({
               alt="thumbnail"
               height="800"
               width="800"
-              className={`object-cover object-left-top w-full max-h-96`}
+              className={`object-cover object-center w-full max-h-96`}
             />
           </div>
+          <caption className="text-zinc-400 mt-1 text-left text-sm">
+            {meta.imgCredit}
+          </caption>
         </header>
         <Prose className="mt-8">{children}</Prose>
       </article>
