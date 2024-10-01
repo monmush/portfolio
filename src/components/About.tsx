@@ -27,7 +27,7 @@ export default function About() {
           width={600}
           height={400}
           alt="about"
-          className="rounded-md object-covershadow-xl aspect-[6/4] w-2/3 block m-auto my-8 h-auto"
+          className="rounded-md object-cover shadow-xl aspect-[6/4] w-full md:w-2/3 block m-auto my-8 h-auto"
         />
 
         <Paragraph className=" mt-4">
@@ -65,7 +65,7 @@ export default function About() {
           width={400}
           height={600}
           alt="about"
-          className="rounded-md object-covershadow-xl block w-2/3 aspect-[4/3] m-auto my-8 h-auto"
+          className="rounded-md object-cover shadow-xl block w-full md:w-2/3 aspect-[4/3] m-auto my-8 h-auto"
         />
 
         <Paragraph className=" mt-4">
@@ -93,7 +93,7 @@ export default function About() {
           width={600}
           height={900}
           alt="about"
-          className="rounded-md object-covershadow-xl block w-2/3 m-auto my-8 h-auto"
+          className="rounded-md object-cover shadow-xl block w-full md:w-2/3 m-auto my-8 h-auto"
         />
 
         <Paragraph className=" mt-4">
@@ -105,7 +105,7 @@ export default function About() {
           businesses.
         </Paragraph>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 my-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10 my-10">
           {bottomImages.map((image, index) => (
             <motion.div
               key={image}
