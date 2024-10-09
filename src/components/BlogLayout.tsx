@@ -62,7 +62,7 @@ export function BlogLayout({
           </div>
           {meta.imgCredit && (
             <caption className="text-zinc-400 mt-1 text-left text-sm">
-              Photo by{" "}
+              <span>Photo by </span>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
@@ -70,7 +70,7 @@ export function BlogLayout({
               >
                 {meta.imgCredit.photographer}
               </a>{" "}
-              on{" "}
+              <span>on </span>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
